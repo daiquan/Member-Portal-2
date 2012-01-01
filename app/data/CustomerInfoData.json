@@ -1,0 +1,27 @@
+[
+{
+	claimPaymentMethod:'Cheque',
+	primaryContacts:[
+		{contactName:'Home Phone', contactValue:'(204) 123-4567'},
+		{contactName:'Cell Phone', contactValue:'(204) 555-4567'},
+		{contactName:'Email', contactValue:'quan.dai@westernfic.com'}
+	],
+
+	secondaryContacts:[
+		{contactName:'Home Phone', contactValue:'(204) 666-4567'},
+		{contactName:'Cell Phone', contactValue:'(204) 555-4567'},
+		{contactName:'Email', contactValue:'olivia@hotmail.com'}
+	],
+	ratingAddress:{
+		street:'88 Eric St.',
+		city:'Winnipeg',
+		province:'MB'
+	},
+	mailingAddress:{
+		street:'88 Eric St.',
+		city:'Winnipeg',
+		province:'MB'
+	}
+
+}
+]
