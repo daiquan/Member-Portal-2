@@ -1,5 +1,6 @@
 var paymentInfoList={
 	xtype:'list',
+	id:'lstPaymentInfo',
 	store:'PaymentInfoST',
 
 	itemTpl:

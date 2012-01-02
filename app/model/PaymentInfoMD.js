@@ -11,6 +11,7 @@ Ext.define('PET.model.PaymentInfoMD',{
 	{name:'nextPayment',type:'float'},
 	{name:'scheduled',type:'date'},
 	{name:'paymentMethod',type:'string'},
-	{name:'withdrawalDay',type:'int'}
+	{name:'withdrawalDay',type:'int'},
+	{name:'paymentMethodId',type:'string'}
 	]
 });

@@ -8,8 +8,9 @@
 	totalDue:100.00,
 	nextPayment:130.00,
 	scheduled:'2012-2-1',
-	paymentMethod:'master card',
-	withdrawalDay:1
+	paymentMethod:'Bank',
+	withdrawalDay:1,
+	paymentMethodId:'1000'
 },
 {
 	petType:'Dog',
@@ -21,6 +22,7 @@
 	totalDue:100.00,
 	nextPayment:130.00,
 	scheduled:'2012-2-1',
-	paymentMethod:'master card',
-	withdrawalDay:1
+	paymentMethod:'CreditCard',
+	withdrawalDay:1,
+	paymentMethodId:'1001'
 }]

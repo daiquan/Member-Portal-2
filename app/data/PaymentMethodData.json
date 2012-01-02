@@ -1,0 +1,18 @@
+[{
+	type:'Bank',
+	nameOnAccount:'danny',
+	accountNumber:'111111111',
+	transitNumber:'111',
+	bankNumber:'1234432',
+	billingAddress:'123 portage ave.',
+	id:'1000'
+},
+{
+	type:'MasterCard',
+	nameOnAccount:'olivia',
+	accountNumber:'411111111111111111',
+	transitNumber:'',
+	bankNumber:'',
+	billingAddress:'123 portage ave.',
+	id:'1001'
+}]
