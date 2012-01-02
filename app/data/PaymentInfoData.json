@@ -1,0 +1,26 @@
+[{
+	petType:'Cat',
+	petName:'danny',
+	breed:'Cockapoo',
+	policyNumber:'123456',
+	currentDue:100.00,
+	outstanding:0.00,
+	totalDue:100.00,
+	nextPayment:130.00,
+	scheduled:'2012-2-1',
+	paymentMethod:'master card',
+	withdrawalDay:1
+},
+{
+	petType:'Dog',
+	petName:'olivia',
+	breed:'Cockapoo',
+	policyNumber:'123456',
+	currentDue:100.00,
+	outstanding:0.00,
+	totalDue:100.00,
+	nextPayment:130.00,
+	scheduled:'2012-2-1',
+	paymentMethod:'master card',
+	withdrawalDay:1
+}]

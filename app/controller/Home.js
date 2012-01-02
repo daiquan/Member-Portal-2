@@ -1,7 +1,7 @@
 Ext.define('PET.controller.Home',{
     extend:'Ext.app.Controller',
-    views:['HomeVW','AddPetQuoteVW','ClaimFormVW','ClaimVW','DocumentVW','ForgotPasswordVW','LoginVW','PaymentInfoVW','PetInfoVW','PolicyVW','RegisterVW','PaymentHistoryVW','ChangePasswordVW','ChangeWithdrawalDayVW','PracticeVW','MicrochipVW','PaymentMethodVW','ClaimPaymentMethodVW','EditPrimaryContactVW','EditSecondaryContactVW','EditPetAddressVW','EditMailingAddressVW'],
-    stores:['CustInfoST','SimpleST','CustPrimaryContactST','CustSecondaryContactST','CustPetAddressST','CustMailingAddressST'],
+    views:['HomeVW','EditPrimaryContactVW','EditSecondaryContactVW','EditPetAddressVW','EditMailingAddressVW'],
+    stores:['CustInfoST','CustPrimaryContactST','CustSecondaryContactST','CustPetAddressST','CustMailingAddressST'],
   config: {
       profile: Ext.os.deviceType.toLowerCase()
   },
