@@ -1,7 +1,7 @@
 Ext.define('PET.controller.PaymentInfo',{
     extend:'Ext.app.Controller',
     views:['PaymentInfoVW','PaymentHistoryVW','ChangeWithdrawalDayVW','PaymentMethodVW'],
-    stores:['PaymentInfoST','PaymentMethodST'],
+    stores:['PaymentInfoST','PaymentMethodST','PaymentHistoryST'],
   config: {
       profile: Ext.os.deviceType.toLowerCase()
   },
@@ -97,26 +97,78 @@ Ext.define('PET.controller.PaymentInfo',{
 					},
 					'#sbtnPaymentInfo':{
 						'toggle':function(btn){
-							var cards = Ext.getCmp('paymentMethodCards');
-							var pressedBtnText = btn.getPressedButtons()[0].getText();
-							if(pressedBtnText== 'New Method')
-							{
-								cards.setActiveItem(0);
+							this.goToActivePaymentCard();
+						}
+					},
+					'#btnPaymentMethodSave':{
+						'tap':function(){
+
+							//var cards = Ext.getCmp('paymentMethodCards');
+							//var pressedBtnText = btn.getPressedButtons()[0].getText();
+							if(!this.paymentMethodActions){
+								this.paymentMethodActions=Ext.create('Ext.ActionSheet',{
+									items:[
+									{
+										text:'Change for this policy',
+										id:'btnChangePolicyPaymentMethod'
+									},
+									{
+										text:'Change for all polices',
+										id:'btnChangeAllPoliciesPaymentMethod'
+									},
+									{
+										text:'Cancel',
+										scope:this,
+										handler:function(){
+											this.actions.hide();
+										}
+									}
+									]
+								});
 							}
-							if(pressedBtnText == 'Current Method')
-							{
-								cards.setActiveItem(1);
-							}
-							if(pressedBtnText == 'Other Method')
-							{
-								cards.setActiveItem(2);
-							}
+							this.paymentMethodActions.show();
+						}
+					},
+					'#btnChangePolicyPaymentMethod':{
+						'tap':function(){
+							//todo: save payment
+							this.changeView('PaymentInfoVW','right');
+							this.paymentMethodActions.hide();
+						}
+					},
+					'#btnChangeAllPoliciesPaymentMethod':{
+						'tap':function(){
+							//todo: save payment
+							this.changeView('PaymentInfoVW','right');
+							this.paymentMethodActions.hide();
 						}
 					}
 
 
 						
         }); //end control
-    }
+				
+    },
+		goToActivePaymentCard:function(){
+			var cards = Ext.getCmp('paymentMethodCards');
+			var pressedBtnText = btn.getPressedButtons()[0].getText();
+			if(pressedBtnText== 'New Method')
+			{
+				cards.setActiveItem(0);
+			}
+			if(pressedBtnText == 'Current Method')
+			{
+				cards.setActiveItem(1);
+			}
+			if(pressedBtnText == 'Other Method')
+			{
+				cards.setActiveItem(2);
+			}
+		},
+		changeView:function(viewName,direction,data){
+			var home;
+			home = this.getController('Home');
+			home.changeView(viewName,direction,data);
+		}
 });
 

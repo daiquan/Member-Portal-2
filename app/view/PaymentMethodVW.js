@@ -178,13 +178,13 @@ Ext.define('PET.view.PaymentMethodVW', {
 				{
 					xtype:'toolbar',
 					docked:'bottom',
-					id:'btnPaymentMethodSave',
 					items:[
 					{
 						xtype:'button',
 						docked:'right',
 						text:'Save',
-						ui:'action'
+						ui:'action',
+						id:'btnPaymentMethodSave'
 					}
 					
 					]

@@ -2,7 +2,7 @@ var paymentInfoList={
 	xtype:'list',
 	id:'lstPaymentInfo',
 	store:'PaymentInfoST',
-
+	disableSelection:true,
 	itemTpl:
 		'<span style="float:left;width:8%"><img src="https://www.petsecure.com/Portal/Content/Petsecure/images/cat.jpg" width="100"/></span>'+
 		'<div style="float:left;width:92%;">'+
@@ -39,14 +39,24 @@ Ext.define('PET.view.PaymentInfoVW', {
 					xtype:'toolbar',
 					title:'Payment Info',
 					docked:'top',
+					defaults:{
+						ui:'plain',
+						iconMask:true,
+						xtype:'button'
+					},
 					items:[
 					{
-						xtype:'button',
-						text:'back',
-						ui:'back',
+						
+						iconCls:'reply',
 						go:'right_HomeVW',
 						docked:'left'
+					},
+					{
+						iconCls:'search',
+						go:'left_PaymentHistoryVW',
+						docked:'right'
 					}
+					
 					]
 				
 				},
