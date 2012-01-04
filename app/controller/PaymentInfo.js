@@ -22,7 +22,7 @@ Ext.define('PET.controller.PaymentInfo',{
  
     init:function(){
         
-        console.log('init home controller.');
+        console.log('init payment info controller.');
 
       
         this.control({
@@ -42,6 +42,7 @@ Ext.define('PET.controller.PaymentInfo',{
 										{
 											text:'Cancel',
 											scope:this,
+											ui:'confirm',
 											handler:function(){
 												this.actions.hide();
 											}
@@ -119,6 +120,7 @@ Ext.define('PET.controller.PaymentInfo',{
 									{
 										text:'Cancel',
 										scope:this,
+										ui:'confirm',
 										handler:function(){
 											this.actions.hide();
 										}
