@@ -55,9 +55,12 @@ Ext.define('PET.view.EditMailingAddressVW', {
 					docked:'top',
 					items:[
 					{
-						xtype:'button',
-						text:'back',
-						ui:'back',
+						
+							ui:'plain',
+							iconMask:true,
+							xtype:'button',
+							iconCls:'reply',
+						
 						go:'right_CustInfoVW'
 					}
 					]

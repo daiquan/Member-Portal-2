@@ -108,10 +108,12 @@ Ext.define('PET.view.CustInfoVW', {
 					docked:'top',
 					items:[
 						{
+							ui:'plain',
+							iconMask:true,
 							xtype:'button',
-							text:'back',
-							go:'right_HomeVW',
-							ui:'back'
+							iconCls:'reply',
+							go:'right_HomeVW'
+							
 						},
 						{
 							xtype:'button',

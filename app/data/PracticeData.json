@@ -1,0 +1,15 @@
+[
+{
+province:'MB',
+practice:'Pembina Veterinary Clinic',
+address:'Winnipeg, MB R3L 2E7',
+isPrimary:'true'
+},
+{
+province:'ON',
+practice:'Pembina Veterinary Clinic',
+address:'Winnipeg, MB R3L 2E7',
+isPrimary:'false'
+}
+
+]

@@ -1,7 +1,7 @@
 Ext.define('PET.controller.PetInfo',{
     extend:'Ext.app.Controller',
-    views:['PetInfoVW','PolicyVW','PracticeVW','MicrochipVW'],
-    stores:['PetInfoST'],
+    views:['PetInfoVW','PolicyVW','PracticeVW','MicrochipVW','EditMicrochipVW','EditPracticeVW','NewPracticeVW'],
+    stores:['PetInfoST','MicrochipST','PracticeST'],
   config: {
       profile: Ext.os.deviceType.toLowerCase()
   },
@@ -86,7 +86,40 @@ Ext.define('PET.controller.PetInfo',{
 					},
 					'#btnPetMicrochip':{
 						'tap':function(){
+							this.changeView('MicrochipVW');
 							this.actions.hide();
+						}
+					},
+					'#lstMicrochip':{
+						'itemtap':function(item){
+							var record = item.getSelected().items[0];
+							
+							this.changeView('EditMicrochipVW','left',record);
+							Ext.getCmp('mcTitle').setTitle('Edit Microchip');
+							Ext.getCmp('btnMCDelete').setHidden(false);
+						}
+					},
+					'#btnAddMicrochip':{
+						'tap':function()
+						{
+							this.changeView('EditMicrochipVW');
+							Ext.getCmp('mcTitle').setTitle('Add Microchip');
+							Ext.getCmp('btnMCDelete').setHidden(true);
+						}
+					},
+					'#lstPractice':{
+						'itemtap':function(item){
+								var record = item.getSelected().items[0];
+								this.changeView('EditPracticeVW','left',record);
+								Ext.getCmp('practiceTitle').setTitle('Edit Practice');
+								Ext.getCmp('btnPracticeDelete').setHidden(false);
+						}
+					},
+					'#btnAddPractice':{
+						'tap':function(){
+							this.changeView('EditPracticeVW');
+							Ext.getCmp('practiceTitle').setTitle('Add Practice');
+							Ext.getCmp('btnPracticeDelete').setHidden(true);
 						}
 					}
 

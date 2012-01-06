@@ -164,11 +164,12 @@ Ext.define('PET.view.PaymentMethodVW', {
 					docked:'top',
 					items:[
 					{
+						ui:'plain',
+						iconMask:true,
 						xtype:'button',
-						text:'back',
-						ui:'back',
-						go:'right_PaymentInfoVW',
-						docked:'left'
+						iconCls:'reply',
+						go:'right_PaymentInfoVW'
+					
 					}
 					]
 				

@@ -56,9 +56,10 @@ Ext.define('PET.view.EditSecondaryContactVW', {
 					docked:'top',
 					items:[
 					{
+						ui:'plain',
+						iconMask:true,
 						xtype:'button',
-						text:'back',
-						ui:'back',
+						iconCls:'reply',
 						go:'right_CustInfoVW'
 					}
 					

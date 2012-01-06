@@ -98,7 +98,7 @@ Ext.define('PET.controller.PaymentInfo',{
 					},
 					'#sbtnPaymentInfo':{
 						'toggle':function(btn){
-							this.goToActivePaymentCard();
+							this.goToActivePaymentCard(btn);
 						}
 					},
 					'#btnPaymentMethodSave':{
@@ -151,8 +151,9 @@ Ext.define('PET.controller.PaymentInfo',{
         }); //end control
 				
     },
-		goToActivePaymentCard:function(){
+		goToActivePaymentCard:function(btn){
 			var cards = Ext.getCmp('paymentMethodCards');
+			
 			var pressedBtnText = btn.getPressedButtons()[0].getText();
 			if(pressedBtnText== 'New Method')
 			{

@@ -1,5 +1,5 @@
 
-var primaryContactForm = {
+var microchipForm = {
 
 		xtype:'fieldset',
 		defaults:{
@@ -9,50 +9,43 @@ var primaryContactForm = {
 		{
 			xtype:'selectfield',
 			label:'Type',
-			name:'contactName',
+			name:'type',
 			options:[
 			{
-				text:'Home Phone',
-				value:'HomePhone'
+				text:'Microchip',
+				value:'microchip'
 			},
 			{
-				text:'Cell Phone',
-				value:'CellPhone'
+				text:'Tattoo',
+				value:'tattoo'
 			},
 			{
-				text:'Work Phone',
-				value:'WorkPhone'
-			},
-			{
-				text:'Fax',
-				value:'Fax'
-			},
-			{
-				text:'Email',
-				value:'Email'
+				text:'Petlynx',
+				value:'petlynx'
 			}
 			]
 		},
 		{
 			xtype:'textfield',
-			label:'Contact',
-			name:'contactValue'
+			label:'Identifier',
+			name:'identifier'
 		}
-		
 		]
+		
+		
 };
-Ext.define('PET.view.EditPrimaryContactVW', {
-	id:"EditPrimaryContactVW",
+Ext.define('PET.view.EditMicrochipVW', {
+	id:"EditMicrochipVW",
     extend: 'Ext.form.Panel',
-		alias: 'widget.EditPrimaryContactVW',
+		alias: 'widget.EditMicrochipVW',
     config: {
       fullscreen: true,
  	   items: 
 			[
 				{
 					xtype:'toolbar',
-					id:'pcTitle',
-					title:'Primary Contact',
+					id:'mcTitle',
+					title:'Modify Microchip',
 					docked:'top',
 					items:[
 					{
@@ -60,7 +53,7 @@ Ext.define('PET.view.EditPrimaryContactVW', {
 						iconMask:true,
 						xtype:'button',
 						iconCls:'reply',
-						go:'right_CustInfoVW'
+						go:'right_MicrochipVW'
 					}
 					
 					]
@@ -72,21 +65,22 @@ Ext.define('PET.view.EditPrimaryContactVW', {
 					items:[
 					{
 						xtype:'button',
-						id:'btnPCDelete',
+						id:'btnMCDelete',
 						ui:'action',
 						docked:'left',
 						text:'Delete'
 					},
 					{
 						xtype:'button',
-						id:'btnPCAction',
+						id:'btnMCAction',
 						ui:'action',
-						docked:'right'
+						docked:'right',
+						text:'Save'
 						
 					}
 					]
 				},
-				primaryContactForm
+				microchipForm
 			]		
    }
 });

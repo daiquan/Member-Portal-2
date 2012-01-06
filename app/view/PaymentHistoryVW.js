@@ -24,10 +24,21 @@ Ext.define('PET.view.PaymentHistoryVW', {
 			},
  	   items: 
 			[
+
 				{
 					xtype:'toolbar',
 					title:'Payment History',
-					docked:'top'
+					docked:'top',
+					items:
+					[
+					{
+						ui:'plain',
+						iconMask:true,
+						xtype:'button',
+						iconCls:'reply',
+						go:'right_PaymentInfoVW'
+					}
+					]
 				
 				},
 				paymentHistoryList

@@ -54,9 +54,10 @@ Ext.define('PET.view.EditPetAddressVW', {
 					title:'Pet Address',
 					docked:'top',
 					items:[{
+						ui:'plain',
+						iconMask:true,
 						xtype:'button',
-						text:'back',
-						ui:'back',
+						iconCls:'reply',
 						go:'right_CustInfoVW'
 					}]
 				
