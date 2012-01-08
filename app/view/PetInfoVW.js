@@ -57,7 +57,8 @@ Ext.define('PET.view.PetInfoVW', {
 					]
 				
 				},
-				petInfoList
+				petInfoList,
+				toolbarMenu
 			]		
    }
 });

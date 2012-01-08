@@ -1,0 +1,17 @@
+[
+{
+publishDate:'2012-1-1',
+documentTitle:'EOB 1',
+isNew:'true'
+},
+{
+publishDate:'2012-2-1',
+documentTitle:'EOB 2',
+isNew:'false'
+},
+{
+publishDate:'2012-3-1',
+documentTitle:'EOB 3',
+isNew:'true'
+}
+]

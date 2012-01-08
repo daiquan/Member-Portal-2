@@ -63,6 +63,13 @@ Ext.define('PET.controller.Home',{
 
                 }
             },
+            'tab[go]':{'select':function(btn){
+                var direction = btn.go.split('_')[0];
+                var viewName = btn.go.split('_')[1];
+                this.changeView(viewName,direction)
+
+                }
+            },
 						'#btnAddPrimaryContact':{
 							'tap':function(){
 								Ext.getCmp('btnAddContact').actions.hide();
@@ -120,6 +127,11 @@ Ext.define('PET.controller.Home',{
 						'#btnSCDelete':{
 							'tap':function(){
 								this.removeContact('EditSecondaryContactVW');
+							}
+						},
+						'#tabCustomerInfo':{
+							'select':function(){
+								this.changeView('CustInfoVW')
 							}
 						}
 
@@ -184,7 +196,9 @@ Ext.define('PET.controller.Home',{
           //deleteButton.show();
       }
 		},
-    changeView: function(viewName,direction,data) {       
+    changeView: function(viewName,direction,data) {  
+	     	var activeItem = Ext.Viewport.getActiveItem();
+			
         var getter = 'get'+viewName,
         xtype=viewName.toLowerCase()+'view', 
         card
@@ -203,7 +217,7 @@ Ext.define('PET.controller.Home',{
 							
 							swipe:function(e){
 								if(e.direction=='right'){
-									this.changeView('HomeVW',e.direction)
+									this.changeView(previewsView.pop(),e.direction)
 								}
 							} //end function
 						});
@@ -222,7 +236,11 @@ Ext.define('PET.controller.Home',{
 				if(data!=null){
 					card.setRecord(data);
 				}
+				
+				if(direction == 'left'){
+						previewsView.push(activeItem.getItemId());
+				}
 		
     }
 });
-
+var previewsView = [];

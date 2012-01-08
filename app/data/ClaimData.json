@@ -1,0 +1,26 @@
+[
+{
+	publishDate:'2011-12-1',
+	petName:'danny',
+	received:'2011-12-2',
+	claimAmount:'30.00',
+	paidAmount:'30.00',
+	status:'Complete'
+},
+{
+	publishDate:'2011-12-1',
+	petName:'olivia',
+	received:'2011-12-2',
+	claimAmount:'30.00',
+	paidAmount:'30.00',
+	status:'Complete'
+},
+{
+	publishDate:'2011-12-1',
+	petName:'lucky',
+	received:'2011-12-2',
+	claimAmount:'30.00',
+	paidAmount:'30.00',
+	status:'Complete'
+}
+]

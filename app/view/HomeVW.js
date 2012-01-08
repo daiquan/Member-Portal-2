@@ -1,5 +1,5 @@
 var menu={
-	xtype:'panel',
+	xtype:'container',
 	layout:{
 		type:'hbox'
 	},
@@ -40,16 +40,61 @@ var menu={
 		id: 'btnAddPetQuote',
 		text:'Add Pet',
 		go:'left_AddPetQuoteVW'
-   },
-  {
-		id: 'btnTestDataView',
-		text:'TEst data view',
-		go:'left_TestDataView'
    }
 	]
 	
 	
 };
+
+var toolbarMenu = {
+	xtype:'toolbar',
+	docked:'bottom',
+	layout:{
+		pack:'center',
+		align:'center'
+	},
+	defaults: {
+      //xtype:'button'
+			iconMask:true
+  },
+	items: 
+		[
+			{
+				iconCls:'home',
+				title:'Home',
+				go:'left_HomeVW'
+				
+			},
+			{
+				iconCls:'user',
+				title:'Customer Info',
+				go:'left_CustInfoVW'
+			
+				
+			},
+			{
+				iconCls:'credit_card',
+				title:'Payment',
+				go:'left_PaymentInfoVW'
+			},
+			{
+				iconCls:'dog-paw',
+				title:'Pet Info',
+				go:'left_PetInfoVW'
+			},
+			{
+				iconCls:'download',
+				title:'Document',
+				go:'left_DocumentVW'
+			},
+			{
+				iconCls:'compose',
+				title:'Claim',
+				go:'left_ClaimVW'
+			}
+		]
+	
+}
 Ext.define('PET.view.HomeVW', {
 	id:"HomeVW",
     extend: 'Ext.Panel',
@@ -65,18 +110,31 @@ Ext.define('PET.view.HomeVW', {
 				}
 			},*/
 
+/*
+		tabBar:{
+			layout:{
+				pack:'center',
+				align:'center'
+			},
+			docked:'bottom',
+			scrollable:{
+				direction:'horizontal'
+				//indicators:true
+			}
+		},*/
+
 
  	   items: 
 			[
+		
 				{
 					xtype:'toolbar',
 					title:'Home',
 					docked:'top'
 				
 				},
-				menu
-
-    
+				toolbarMenu
+				
 			]		
    }
 });

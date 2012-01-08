@@ -1,7 +1,9 @@
+
+
 Ext.define('PET.controller.PetInfo',{
     extend:'Ext.app.Controller',
     views:['PetInfoVW','PolicyVW','PracticeVW','MicrochipVW','EditMicrochipVW','EditPracticeVW','NewPracticeVW'],
-    stores:['PetInfoST','MicrochipST','PracticeST'],
+    stores:['PetInfoST','MicrochipST','PracticeST','PolicyDetailST','CoverageST'],
   config: {
       profile: Ext.os.deviceType.toLowerCase()
   },
@@ -24,7 +26,6 @@ Ext.define('PET.controller.PetInfo',{
         
         console.log('init pet info controller.');
         
-      
         this.control({
 					'#lstPetInfo':{
 						'itemtap':function(){
@@ -122,6 +123,7 @@ Ext.define('PET.controller.PetInfo',{
 							Ext.getCmp('btnPracticeDelete').setHidden(true);
 						}
 					}
+					
 
 						
         }); //end control

@@ -154,20 +154,7 @@ Ext.define('PET.view.CustInfoVW', {
 				
 				},
 				customerInfoData,
-				{
-					xtype:'toolbar',
-					docked:'bottom',
-					items:[
-						{
-							xtype:'button',
-							text:'Do Sth',
-							ui:'action',
-							id:'btnDoSth'
-						}
-					
-					]
-				
-				}
+				toolbarMenu
 			]	
    }
 });

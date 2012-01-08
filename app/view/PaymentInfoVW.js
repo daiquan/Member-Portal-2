@@ -60,7 +60,8 @@ Ext.define('PET.view.PaymentInfoVW', {
 					]
 				
 				},
-				paymentInfoList
+				paymentInfoList,
+				toolbarMenu
 			]		
    }
 });

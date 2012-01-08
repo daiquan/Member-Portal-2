@@ -1,7 +1,7 @@
 Ext.define('PET.controller.Document',{
     extend:'Ext.app.Controller',
     views:['DocumentVW'],
-    stores:[],
+    stores:['DocumentST'],
   config: {
       profile: Ext.os.deviceType.toLowerCase()
   },

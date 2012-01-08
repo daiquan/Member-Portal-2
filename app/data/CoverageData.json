@@ -1,0 +1,17 @@
+[
+	{
+	coverage:'Advertising and Reward',
+	percent:'100',
+	waitingPeriodEndDate:'2011-2-1'
+	},
+	{
+	coverage:'Holiday Cancellation',
+	percent:'100',
+	waitingPeriodEndDate:'2011-2-1'
+	},
+	{
+	coverage:'Cruciate',
+	percent:'100',
+	waitingPeriodEndDate:'2011-2-1'
+	}
+]
