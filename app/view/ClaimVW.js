@@ -18,6 +18,15 @@ Ext.define('PET.view.ClaimVW', {
 						xtype:'button',
 						iconCls:'reply',
 						go:'right_HomeVW'
+					},
+					{
+						xtype:'button',
+						id:'btnAddClaim',
+						iconCls: 'add',
+		        iconMask: true,
+		        ui: 'plain',
+						docked:'right',
+						go:'left_ClaimFormVW'
 					}
 					]
 				

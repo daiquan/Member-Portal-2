@@ -25,13 +25,21 @@ Ext.define('PET.controller.Home',{
     init:function(){
         
         console.log('init home controller.');
+				Ext.Viewport.setLayout({type: 'card', animation: {type: 'slide',direction:'left'}});
+				var landingPage;
+        if(isAuthenticated){
+					var landingPage=this.getHomeVWView().create();
+				}
+				else{
+					var landingPage=this.getController('Login').getLoginVWView().create();
+				}
         
-        Ext.Viewport.setLayout({type: 'card', animation: {type: 'slide',direction:'left'}});
-        var _menu=this.getHomeVWView().create();
         
-        Ext.Viewport.add(_menu);
+        
+        Ext.Viewport.add(landingPage);
       
         this.control({
+
             '#lstPrimaryContact':{
 								'itemtap':function(item){
                  this.changeView('EditPrimaryContactVW','left',item.getSelected().items[0]);
