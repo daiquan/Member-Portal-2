@@ -39,6 +39,17 @@ Ext.define('PET.controller.Home',{
         Ext.Viewport.add(landingPage);
       
         this.control({
+						'#CustInfoVW':{
+							'activate':function(){
+								var pstore = this.getCustPrimaryContactSTStore();
+								var sstore = this.getCustSecondaryContactSTStore();
+								var lstP = Ext.getCmp('lstPrimaryContact');
+								var lstS = Ext.getCmp('lstSecondaryContact');
+								lstP.setHeight(pstore.data.length*46);
+								lstS.setHeight(sstore.data.length*46);
+							}
+							
+						},
 
             '#lstPrimaryContact':{
 								'itemtap':function(item){

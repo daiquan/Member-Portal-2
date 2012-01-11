@@ -16,8 +16,9 @@ var customerInfoData = {
 				onItemDisclosure:true,
 				store:'CustPrimaryContactST',
 				id:'lstPrimaryContact',
-				height:150,
-				itemTpl:'<span style="float:left;"><b>{contactName}</b>:</span><span style="margin-right:100px;margin-bottom:5px;float:right;"> {contactValue} </span>'
+				height:46,
+				scrollable:false,
+				itemTpl:'<b>{contactName}</b>:{contactValue}'
 		
 
 			}
@@ -33,8 +34,9 @@ var customerInfoData = {
 			onItemDisclosure:true,
 			store:'CustSecondaryContactST',
 			id:'lstSecondaryContact',
-			height:150,
-			itemTpl:'<span style="float:left;"><b>{contactName}</b>:</span><span style="margin-right:100px;margin-bottom:5px;float:right;"> {contactValue} </span>'
+			height:46,
+			scrollable:false,
+			itemTpl:'<b>{contactName}</b>:{contactValue}'
 	
 
 		}
@@ -49,7 +51,7 @@ var customerInfoData = {
 			onItemDisclosure:true,
 			store:'CustPetAddressST',
 			id:'lstPetAddress',
-			height:150,
+			height:110,
 			scrollable:false,
 			itemTpl:'<span><b>Street</b>:</span><span> {street}</br>'+ 
 			'<span><b>City</b>:</span><span> {city}</br>'+ 
@@ -71,7 +73,7 @@ var customerInfoData = {
 			onItemDisclosure:true,
 			store:'CustMailingAddressST',
 			id:'lstMailingAddress',
-			height:150,
+			height:110,
 			scrollable:false,
 			itemTpl:'<span><b>Street</b>:</span><span> {street}</br>'+ 
 			'<span><b>City</b>:</span><span> {city}</br>'+ 

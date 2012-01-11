@@ -155,15 +155,15 @@ Ext.define('PET.controller.PaymentInfo',{
 			var cards = Ext.getCmp('paymentMethodCards');
 			
 			var pressedBtnText = btn.getPressedButtons()[0].getText();
-			if(pressedBtnText== 'New Method')
+			if(pressedBtnText== 'New')
 			{
 				cards.setActiveItem(0);
 			}
-			if(pressedBtnText == 'Current Method')
+			if(pressedBtnText == 'Current')
 			{
 				cards.setActiveItem(1);
 			}
-			if(pressedBtnText == 'Other Method')
+			if(pressedBtnText == 'Other')
 			{
 				cards.setActiveItem(2);
 			}

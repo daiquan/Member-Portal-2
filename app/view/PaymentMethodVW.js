@@ -7,14 +7,14 @@ var paymentMethodButtons={
 	},
 	items:[
 	{
-		text:'New Method'
+		text:'New'
 	},
 	{
-		text:'Current Method',
+		text:'Current',
 		pressed:true
 	},
 	{
-		text:'Other Method'
+		text:'Other'
 	}
 	]
 };

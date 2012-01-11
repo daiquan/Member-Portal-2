@@ -27,6 +27,7 @@ Ext.define('PET.controller.PetInfo',{
         console.log('init pet info controller.');
         
         this.control({
+
 					'#lstPetInfo':{
 						'itemtap':function(){
 								if(!this.actions){
