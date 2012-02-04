@@ -1,7 +1,6 @@
 Ext.define('PET.controller.Login',{
     extend:'Ext.app.Controller',
-    views:['RegisterVW','LoginVW','ForgotPasswordVW','ChangePasswordVW'],
-    stores:[],
+
   config: {
       profile: Ext.os.deviceType.toLowerCase()
   },
@@ -54,7 +53,7 @@ Ext.define('PET.controller.Login',{
     },
 		changeView:function(viewName,direction,data){
 			var home;
-			home = this.getController('Home');
+			home = this.getApplication().getController('Home');
 			home.changeView(viewName,direction,data);
 		}
 });

@@ -1,7 +1,5 @@
 Ext.define('PET.controller.Home',{
     extend:'Ext.app.Controller',
-    views:['HomeVW','EditPrimaryContactVW','EditSecondaryContactVW','EditPetAddressVW','EditMailingAddressVW'],
-    stores:['CustInfoST','CustPrimaryContactST','CustSecondaryContactST','CustPetAddressST','CustMailingAddressST'],
   config: {
       profile: Ext.os.deviceType.toLowerCase()
   },
@@ -27,11 +25,16 @@ Ext.define('PET.controller.Home',{
         console.log('init home controller.');
 				Ext.Viewport.setLayout({type: 'card', animation: {type: 'slide',direction:'left'}});
 				var landingPage;
+				//isAuthenticated=true;
         if(isAuthenticated){
-					var landingPage=this.getHomeVWView().create();
+					
+					var landingPage=Ext.create('PET.view.HomeVW');
 				}
 				else{
-					var landingPage=this.getController('Login').getLoginVWView().create();
+					//var landingPage = this.createView('HomeVW');
+					//console.log(app);
+					
+					var landingPage=Ext.create('PET.view.LoginVW');
 				}
         
         
@@ -41,8 +44,8 @@ Ext.define('PET.controller.Home',{
         this.control({
 						'#CustInfoVW':{
 							'activate':function(){
-								var pstore = this.getCustPrimaryContactSTStore();
-								var sstore = this.getCustSecondaryContactSTStore();
+								var pstore =Ext.getStore('CustPrimaryContactST'); 
+								var sstore = Ext.getStore('CustSecondaryContactST'); 
 								var lstP = Ext.getCmp('lstPrimaryContact');
 								var lstS = Ext.getCmp('lstSecondaryContact');
 								lstP.setHeight(pstore.data.length*46);
@@ -217,47 +220,34 @@ Ext.define('PET.controller.Home',{
 		},
     changeView: function(viewName,direction,data) {  
 	     	var activeItem = Ext.Viewport.getActiveItem();
-			
-        var getter = 'get'+viewName,
-        xtype=viewName.toLowerCase()+'view', 
-        card
-        if (!this.hasRef(viewName)) {
-            this.getView(viewName);
-            this.addRef({
-			          ref       : viewName,
-			          selector  : xtype,
-			          xtype     : xtype,
-			          autoCreate: true
-			      });
-            Ext.Viewport.add(card);
-						card = this[getter]();
-						card.mon(card.el,{
-							scope:this,
-							
-							swipe:function(e){
-								if(e.direction=='right'){
-									this.changeView(previewsView.pop(),e.direction)
-								}
-							} //end function
-						});
-        }
-				else{
-					card = this[getter]();
+        var card;
+				card = Ext.create('PET.view.'+viewName);
+				historyItem=Ext.Viewport.items.get(viewName);
+				if(historyItem!=null)
+				{
+					Ext.Viewport.setActiveItem(historyItem);
 				}
+				else{
+					Ext.Viewport.add(card);
+				}
+				
+
 				//set default card switch direction to -> left
 				if(direction==null)
 					direction='left';
  
+       
         Ext.Viewport.getLayout().getAnimation().getOutAnimation()._direction=direction;
-        Ext.Viewport.getLayout().getAnimation().getInAnimation()._direction=direction;
-        Ext.Viewport.setActiveItem(card);
+               Ext.Viewport.getLayout().getAnimation().getInAnimation()._direction=direction;
+       
+        //Ext.Viewport.setActiveItem(card);
 
 				if(data!=null){
 					card.setRecord(data);
 				}
 				
 				if(direction == 'left'){
-						previewsView.push(activeItem.getItemId());
+						//previewsView.push(activeItem.getItemId());
 				}
 		
     }

@@ -2,8 +2,7 @@
 
 Ext.define('PET.controller.PetInfo',{
     extend:'Ext.app.Controller',
-    views:['PetInfoVW','PolicyVW','PracticeVW','MicrochipVW','EditMicrochipVW','EditPracticeVW','NewPracticeVW'],
-    stores:['PetInfoST','MicrochipST','PracticeST','PolicyDetailST','CoverageST'],
+
   config: {
       profile: Ext.os.deviceType.toLowerCase()
   },

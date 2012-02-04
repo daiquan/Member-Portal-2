@@ -1,7 +1,6 @@
 Ext.define('PET.controller.PaymentInfo',{
     extend:'Ext.app.Controller',
-    views:['PaymentInfoVW','PaymentHistoryVW','ChangeWithdrawalDayVW','PaymentMethodVW'],
-    stores:['PaymentInfoST','PaymentMethodST','PaymentHistoryST'],
+    
   config: {
       profile: Ext.os.deviceType.toLowerCase()
   },

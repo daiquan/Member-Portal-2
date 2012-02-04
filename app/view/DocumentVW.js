@@ -25,7 +25,7 @@ Ext.define('PET.view.DocumentVW', {
 				{
 					xtype:'list',
 					id:'lstDocument',
-					plugins: [new Ext.plugin.PullRefresh()],
+					//plugins: [new Ext.plugin.PullRefresh()],
 					store:'DocumentST',
 					itemTpl:'{publishDate} - {documentTitle} - <a href="#">download</a> - <tpl if=isNew>New</tpl>'
 					

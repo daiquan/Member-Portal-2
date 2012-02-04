@@ -7,7 +7,7 @@ var paymentHistoryList={
 	plugins: [
 	{ptype:'pullrefresh'}
   ],*/
-  plugins: [new Ext.plugin.PullRefresh()],
+  //plugins: [new Ext.plugin.PullRefresh()],
 
 	store:'PaymentHistoryST',
 	itemTpl:'{date} - {policy} - {paymentMethod} - {amount} - {status}'
@@ -16,8 +16,9 @@ var paymentHistoryList={
 Ext.define('PET.view.PaymentHistoryVW', {
 	id:"PaymentHistoryVW",
     extend: 'Ext.Panel',
-		alias: 'widget.PaymentHistoryVW',
+		
     config: {
+	alias: 'widget.PaymentHistoryVW',
       fullscreen: true,
 			layout:{
 				type:'fit'

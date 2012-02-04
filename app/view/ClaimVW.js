@@ -35,7 +35,7 @@ Ext.define('PET.view.ClaimVW', {
 					xtype:'list',
 					id:'lstClaim',
 					store:'ClaimST',
-					plugins: [new Ext.plugin.PullRefresh()],
+					//plugins: [new Ext.plugin.PullRefresh()],
 					itemTpl:'{claimNumber} - {petName} - {received} - {claimAmount} - {paidAmount} - {status}'
 				},
 				toolbarMenu

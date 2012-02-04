@@ -1,7 +1,5 @@
 Ext.define('PET.controller.Claim',{
     extend:'Ext.app.Controller',
-    views:['ClaimFormVW','ClaimVW'],
-    stores:['ClaimST','ClaimFormST'],
   config: {
       profile: Ext.os.deviceType.toLowerCase()
   },
