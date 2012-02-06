@@ -125,8 +125,10 @@ Ext.define('PET.view.CustInfoVW', {
 			        ui: 'plain',
 							docked:'right',
 							handler:function(){
-								if(!this.actions){
-									this.actions=Ext.create('Ext.ActionSheet',{
+								var action=Ext.Viewport.items.get('AddContactActionSheet');
+								if(!action){
+									action=Ext.create('Ext.ActionSheet',{
+										id:'AddContactActionSheet',
 										items:[
 										{
 											text:'Add Primary Contact',
@@ -140,14 +142,15 @@ Ext.define('PET.view.CustInfoVW', {
 											text:'Cancel',
 											scope:this,
 											handler:function(){
-												this.actions.hide();
+												action.hide();
 											}
 										}
 										]
 									});
+									Ext.Viewport.add(action);
 
 								} //end if
-								this.actions.show();
+								action.show();
 							}
 						}
 

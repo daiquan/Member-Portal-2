@@ -56,7 +56,9 @@ Ext.define('PET.controller.Home',{
 
             '#lstPrimaryContact':{
 								'itemtap':function(item){
-                 this.changeView('EditPrimaryContactVW','left',item.getSelected().items[0]);
+									var data=item.getSelected().items[0];
+									
+                 this.changeView('EditPrimaryContactVW','left',data);
 								 
             	}
 						},
@@ -94,8 +96,8 @@ Ext.define('PET.controller.Home',{
             },
 						'#btnAddPrimaryContact':{
 							'tap':function(){
-								Ext.getCmp('btnAddContact').actions.hide();
-								
+								//Ext.getCmp('btnAddContact').actions.hide();
+								Ext.Viewport.items.get('AddContactActionSheet').hide();
 
 								this.changeView('EditPrimaryContactVW');
 
@@ -103,25 +105,34 @@ Ext.define('PET.controller.Home',{
 						},
 						'#btnAddSecondaryContact':{
 							'tap':function(){
-								Ext.getCmp('btnAddContact').actions.hide();
+								Ext.Viewport.items.get('AddContactActionSheet').hide();
 								
 
 								this.changeView('EditSecondaryContactVW');
 
 							}
 						},
+
 						'#EditPrimaryContactVW':{
+  
 							'activate':function(){
+								Ext.Viewport.items.get('AddContactActionSheet').hide();
 								this.activateContact('EditPrimaryContactVW');
-							},
+								
+							},  
+
+
+         
 							'deactivate':function()
 							{
 								var pcontact = Ext.getCmp('EditPrimaryContactVW');
 								pcontact.reset();
 							}
 						},
+
 						'#EditSecondaryContactVW':{
 							'activate':function(){
+								Ext.Viewport.items.get('AddContactActionSheet').hide();
 									this.activateContact('EditSecondaryContactVW');
 							},
 							'deactivate':function()
@@ -208,7 +219,7 @@ Ext.define('PET.controller.Home',{
 				model=pcontact.getRecord();
 			}
 
-			if (model.phantom) {
+			if (!model.phantom) {
           Ext.getCmp(titleBarId).setTitle('Create '+titleText+' Contact');
           Ext.getCmp(btnId).setText('Create');
           //deleteButton.hide();
@@ -221,17 +232,24 @@ Ext.define('PET.controller.Home',{
     changeView: function(viewName,direction,data) {  
 	     	var activeItem = Ext.Viewport.getActiveItem();
         var card;
-				card = Ext.create('PET.view.'+viewName);
+
 				historyItem=Ext.Viewport.items.get(viewName);
 				if(historyItem!=null)
 				{
-					Ext.Viewport.setActiveItem(historyItem);
+					
+					card=historyItem;
 				}
 				else{
+					card = Ext.create('PET.view.'+viewName);
 					Ext.Viewport.add(card);
 				}
+				Ext.Viewport.setActiveItem(card);
 				
-
+				if(data!=null){
+					
+					card.setRecord(data);
+					
+				}
 				//set default card switch direction to -> left
 				if(direction==null)
 					direction='left';
@@ -240,14 +258,9 @@ Ext.define('PET.controller.Home',{
         Ext.Viewport.getLayout().getAnimation().getOutAnimation()._direction=direction;
                Ext.Viewport.getLayout().getAnimation().getInAnimation()._direction=direction;
        
-        //Ext.Viewport.setActiveItem(card);
 
-				if(data!=null){
-					card.setRecord(data);
-				}
-				
 				if(direction == 'left'){
-						//previewsView.push(activeItem.getItemId());
+						previewsView.push(activeItem.getItemId());
 				}
 		
     }

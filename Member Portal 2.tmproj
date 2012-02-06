@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/view/PetInfoVW.js</string>
+	<string>app/controller/Home.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -20,7 +20,7 @@
 			<key>filename</key>
 			<string>app.js</string>
 			<key>lastUsed</key>
-			<date>2012-02-04T20:49:39Z</date>
+			<date>2012-02-05T15:01:23Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -67,60 +67,44 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>38</integer>
+			<integer>0</integer>
 		</dict>
 		<key>app/controller/Home.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>8</integer>
+				<integer>10</integer>
 				<key>line</key>
-				<integer>96</integer>
+				<integer>119</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>82</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>35</integer>
-				<key>line</key>
-				<integer>96</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>8</integer>
-				<key>line</key>
-				<integer>96</integer>
-			</dict>
+			<integer>109</integer>
 		</dict>
 		<key>app/view/CustInfoVW.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>28</integer>
+				<integer>19</integer>
 				<key>line</key>
-				<integer>149</integer>
+				<integer>1</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>14</integer>
+			<integer>0</integer>
 		</dict>
-		<key>app/view/PetInfoVW.js</key>
+		<key>app/view/EditPrimaryContactVW.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>14</integer>
+				<integer>19</integer>
 				<key>line</key>
-				<integer>35</integer>
+				<integer>3</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -131,8 +115,8 @@
 	<key>openDocuments</key>
 	<array>
 		<string>app/controller/Home.js</string>
+		<string>app/view/EditPrimaryContactVW.js</string>
 		<string>app/view/CustInfoVW.js</string>
-		<string>app/view/PetInfoVW.js</string>
 		<string>app.js</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
