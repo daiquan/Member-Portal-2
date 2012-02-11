@@ -48,8 +48,14 @@ Ext.define('PET.controller.Home',{
 								var sstore = Ext.getStore('CustSecondaryContactST'); 
 								var lstP = Ext.getCmp('lstPrimaryContact');
 								var lstS = Ext.getCmp('lstSecondaryContact');
-								lstP.setHeight(pstore.data.length*46);
-								lstS.setHeight(sstore.data.length*46);
+
+								lstP.setStore(pstore);
+								pstore.load(function(records, operation, success){
+									console.log('primary contacts are loaded.');
+									lstP.setHeight(pstore.data.length*46);
+									lstS.setHeight(sstore.data.length*46);
+									lstP.refresh();
+								},this);
 							}
 							
 						},
@@ -116,7 +122,12 @@ Ext.define('PET.controller.Home',{
 						'#EditPrimaryContactVW':{
   
 							'activate':function(){
-								Ext.Viewport.items.get('AddContactActionSheet').hide();
+								var actionSheet = Ext.Viewport.items.get('AddContactActionSheet');
+								if(actionSheet!=null)
+								{
+									actionSheet.hide();
+								}
+								
 								this.activateContact('EditPrimaryContactVW');
 								
 							},  
@@ -173,11 +184,11 @@ Ext.define('PET.controller.Home',{
     },
 		removeContact:function(contactView){
 			var pcontact = Ext.getCmp(contactView);
-			var store = contactView=='EditPrimaryContactVW'?this.getCustPrimaryContactSTStore():this.getCustSecondaryContactSTStore();
+			var store = contactView=='EditPrimaryContactVW'?Ext.getStore('CustPrimaryContactST'):Ext.getStore('CustSecondaryContactST');
 			var contactListId = contactView=='EditPrimaryContactVW'?'lstPrimaryContact':'lstSecondaryContact';
 			var pcList = Ext.getCmp(contactListId);
 			store.remove(pcontact.getRecord());
-
+			store.sync();
 			pcList.refresh();
 			this.changeView('CustInfoVW','right');
 		
@@ -185,21 +196,24 @@ Ext.define('PET.controller.Home',{
 		createContact:function(contactView){
 			console.log('tap btnPCAction');
 			var pcontact = Ext.getCmp(contactView);
-			var store = contactView=='EditPrimaryContactVW'?this.getCustPrimaryContactSTStore():this.getCustSecondaryContactSTStore();
+			var store = contactView=='EditPrimaryContactVW'?Ext.getStore('CustPrimaryContactST'):Ext.getStore('CustSecondaryContactST');
 			var contactListId = contactView=='EditPrimaryContactVW'?'lstPrimaryContact':'lstSecondaryContact';
-			store.create(pcontact.getValues());
-			
-			var pcList = Ext.getCmp(contactListId);
+			store.add(pcontact.getValues());
+			store.sync();
+/*			var pcList = Ext.getCmp(contactListId);
+
 			store.load({
 	     scope   : this,
 	     callback: function(records, operation, success) {
 	     //the operation object contains all of the details of the load operation
 	     
 				pcList.refresh();
-				this.changeView('CustInfoVW','right');
+				
 				
 	     }
-	     });
+	     });*/
+
+			this.changeView('CustInfoVW','right');
 		},
 		activateContact:function(contactView){
 			

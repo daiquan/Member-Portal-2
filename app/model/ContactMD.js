@@ -6,7 +6,12 @@ Ext.define('PET.model.ContactMD',{
 		{name:'contactName',type:'string'},
 		{name:'contactValue',type:'string'}
 
-		]
+		],
+		proxy: {
+	     type: 'localstorage',
+			 id:'primaryContactData'
+	     //url : 'app/data/CustomerPrimaryContacts.json'
+	  }
 	}
 
 });
