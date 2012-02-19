@@ -1,6 +1,6 @@
 Ext.define('PET.view.LoginVW', {
 	id:"LoginVW",
-    extend: 'Ext.Panel',
+    extend: 'Ext.form.Panel',
 		alias: 'widget.LoginVW',
     config: {
       fullscreen: true,
@@ -20,15 +20,23 @@ Ext.define('PET.view.LoginVW', {
 				{
 					xtype:'fieldset',
 					title:'Login',
-					style:'margin:10px;',
+					style:'margin:20px;',
+					width:500,
+					
+					defaults:{
+						
+						xtype:'textfield'
+					},
 					items:[
 					{
-						xtype:'textfield',
-						label:'Email'
+						xtype:'emailfield',
+						label:'Email',
+						name:'email'
 					},
 					{
-						xtype:'textfield',
-						label:'Password'
+
+						label:'Password',
+						name:'password'
 					}
 
 					
