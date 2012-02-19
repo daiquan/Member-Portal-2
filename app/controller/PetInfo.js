@@ -130,7 +130,7 @@ Ext.define('PET.controller.PetInfo',{
     },
 		changeView:function(viewName,direction,data){
 			var home;
-			home = this.getController('Home');
+			home = this.getApplication().getController('Home');
 			home.changeView(viewName,direction,data);
 		}
 });

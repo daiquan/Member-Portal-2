@@ -277,6 +277,30 @@ Ext.define('PET.controller.Home',{
 						previewsView.push(activeItem.getItemId());
 				}
 		
-    }
+    },
+		callAPIService:function(httpMethod,serviceName,methodName,params,successFnc){
+
+			Ext.Viewport.setMasked({
+				xtype:'loadmask',
+				message:'please wait...'
+			});
+			
+			if(httpMethod == 'POST')
+			{
+				Ext.Ajax.request({
+					url:'http://staging.wfic.ca/api/'+serviceName+'/'+methodName,
+					jsonData:{
+						request:params
+					},
+					headers:{
+						'Content-Type':'application/json'
+					},
+					method:'POST',
+					scope:this,
+					success:successFnc
+					});
+			}
+
+		}
 });
 var previewsView = [];
