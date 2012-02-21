@@ -6,37 +6,75 @@ var petAddressForm={
 	},
 	items:[
 	{
-		label:'Street',
-		name:'street'
+		label:'Address 1',
+		name:'Line1'
+	},
+	{
+		label:'Address 2',
+		name:'Line2'
 	},
 	{
 		label:'City',
-		name:'city'
+		name:'City'
 	},
 	{
 		xtype:'selectfield',
 		label:'Province',
-		name:'province',
+		name:'Region',
 		options:[
 		{
+			text:'AB',value:'AB'
+		},
+		{
 			text:'BC',value:'BC'
+		},
+		{
+			text:'NB',value:'NB'
+		},
+		{
+			text:'NL',value:'NL'
+		},
+		{
+			text:'NT',value:'NT'
+		},
+		{
+			text:'NS',value:'NS'
+		},
+		{
+			text:'NU',value:'NU'
+		},
+		{
+			text:'ON',value:'ON'
+		},
+		{
+			text:'PE',value:'PE'
 		},
 		{
 			text:'MB',value:'MB'
 		},
 		{
 			text:'ON',value:'ON'
+		},
+		{
+			text:'QC',value:'QC'
+		},
+		{
+			text:'SK',value:'SK'
+		},
+		{
+			text:'YT',value:'YT'
 		}
+		
 		]
 	},
 	{
 		label:'Postal Code',
-		name:'postalCode'
+		name:'PostalCode'
 	},
 	{
 		xtype:'datepickerfield',
 		label:'Effective on',
-		name:'effectiveDate',
+		name:'EffectiveDate',
 		value:new Date()
 	}
 	]

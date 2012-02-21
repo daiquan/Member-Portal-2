@@ -5,9 +5,9 @@ Ext.define('PET.store.CustPetAddressST',{
 		autoLoad:true,
 		//autoSync:true,
 		proxy: {
-	     type: 'ajax',
-			 //id:'petAddressData'
-	     url : 'app/data/CustPetAddress.json'
+	     type: 'localstorage',
+			 id:'petAddressData'
+	     //url : 'app/data/CustomerPrimaryContacts.json'
 	  }
 	}
 

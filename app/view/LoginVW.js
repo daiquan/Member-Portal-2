@@ -20,23 +20,30 @@ Ext.define('PET.view.LoginVW', {
 				{
 					xtype:'fieldset',
 					title:'Login',
-					style:'margin:20px;',
-					width:500,
+				
+					width:'95%',
+					instructions:'please enter email on file (913116@pet.com)',
 					
+		/*
 					defaults:{
-						
-						xtype:'textfield'
-					},
+								labelWidth:'40%'
+							
+							},*/
+		
 					items:[
 					{
+						labelWidth:'20%',
 						xtype:'emailfield',
 						label:'Email',
-						name:'email'
+						name:'email',
+						value:'913116@pet.com'
 					},
 					{
-
+				
+						xtype:'passwordfield',
 						label:'Password',
-						name:'password'
+						name:'password',
+						value:'123456'
 					}
 
 					

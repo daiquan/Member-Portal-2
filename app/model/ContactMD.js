@@ -3,8 +3,8 @@ Ext.define('PET.model.ContactMD',{
 	config:{
 		fields:[
 		{name:'id',type:'int'},
-		{name:'contactName',type:'string'},
-		{name:'contactValue',type:'string'}
+		{name:'ContactType',type:'string'},
+		{name:'ContactValue',type:'string'}
 
 		],
 		proxy: {

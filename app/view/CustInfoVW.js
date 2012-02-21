@@ -18,7 +18,7 @@ var customerInfoData = {
 				id:'lstPrimaryContact',
 				height:46,
 				scrollable:false,
-				itemTpl:'<b>{contactName}</b>:{contactValue}'
+				itemTpl:'<b>{ContactType}</b>: {ContactValue}'
 		
 
 			}
@@ -36,7 +36,7 @@ var customerInfoData = {
 			id:'lstSecondaryContact',
 			height:46,
 			scrollable:false,
-			itemTpl:'<b>{contactName}</b>:{contactValue}'
+			itemTpl:'<b>{ContactType}</b>:{ContactValue}'
 	
 
 		}
@@ -53,10 +53,10 @@ var customerInfoData = {
 			id:'lstPetAddress',
 			height:110,
 			scrollable:false,
-			itemTpl:'<span><b>Street</b>:</span><span> {street}</br>'+ 
-			'<span><b>City</b>:</span><span> {city}</br>'+ 
-			'<span><b>Province</b>:</span><span> {province}</br>'+ 
-			'<span><b>Postal Code</b>:</span><span> {postalCode}</br>'+ 
+			itemTpl:'<span><b>Street</b>:</span><span> {Line1}</br>'+ 
+			'<span><b>City</b>:</span><span> {City}</br>'+ 
+			'<span><b>Province</b>:</span><span> {Region}</br>'+ 
+			'<span><b>Postal Code</b>:</span><span> {PostalCode}</br>'+ 
 			'</span>'
 	
 
@@ -75,10 +75,10 @@ var customerInfoData = {
 			id:'lstMailingAddress',
 			height:110,
 			scrollable:false,
-			itemTpl:'<span><b>Street</b>:</span><span> {street}</br>'+ 
-			'<span><b>City</b>:</span><span> {city}</br>'+ 
-			'<span><b>Province</b>:</span><span> {province}</br>'+ 
-			'<span><b>Postal Code</b>:</span><span> {postalCode}</br>'+ 
+			itemTpl:'<span><b>Street</b>:</span><span> {Line1}</br>'+ 
+			'<span><b>City</b>:</span><span> {City}</br>'+ 
+			'<span><b>Province</b>:</span><span> {Region}</br>'+ 
+			'<span><b>Postal Code</b>:</span><span> {PostalCode}</br>'+ 
 			'</span>'
 	
 

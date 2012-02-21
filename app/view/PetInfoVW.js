@@ -7,20 +7,20 @@ var petInfoList={
 		'<span style="float:left;width:35%;margin-top:10px;"><img src="https://www.petsecure.com/Portal/Content/Petsecure/images/cat.jpg" width="100"/></span>'+
 	
 		'<div style="float:left;width:65%;">'+
-			'<div style="background:#DFE0E9;line-height:1.8em;" ><h3 style="margin:10px;"><b>{petName} | {breed}</b></h3></div>'+
+			'<div style="background:#DFE0E9;line-height:1.8em;" ><h3 style="margin:10px;"><b>{PetName} | {Breed}</b></h3></div>'+
 			
 
-			'<div style="line-height:1.3em;"><div style="float:left;">Date of Birth: </div><div style="text-align:left;margin-left:130px">{dateOfBirth}</div></div>'+
-			'<div><div style="float:left;">Age:</div><div style="text-align:left;margin-left:130px">{age}</div></div>'+
-			'<div><div style="float:left;">Gender:</div><div style="text-align:left;margin-left:130px">{gender}</div></div>'+
-			'<div><div style="float:left;">Sprayed/Neutered:</div><div style="text-align:left;margin-left:130px">{sprayed}</div></div>'+
-			'<div><div style="float:left;">Pet Identifier:</div><div style="text-align:left;margin-left:130px">{petIdentifier}</div></div>'+
+			'<div style="line-height:1.3em;"><div style="float:left;">Date of Birth: </div><div style="text-align:left;margin-left:130px">{DateOfBirth}</div></div>'+
+			'<div><div style="float:left;">Age:</div><div style="text-align:left;margin-left:130px">{Age}</div></div>'+
+			'<div><div style="float:left;">Gender:</div><div style="text-align:left;margin-left:130px">{Gender}</div></div>'+
+			'<div><div style="float:left;">Sprayed/Neutered:</div><div style="text-align:left;margin-left:130px">{Sprayed}</div></div>'+
+			'<div><div style="float:left;">Pet Identifier:</div><div style="text-align:left;margin-left:130px">{PetIdentifier}</div></div>'+
 
-			'<div><div style="float:left;"><b>Policy #: </b></div><div style="text-align:left;margin-left:130px"><b>{policyNumber}</b></div></div>'+
-			'<div><div style="float:left;">Product:</div><div style="text-align:left;margin-left:130px">{product}</div></div>'+
-			'<div><div style="float:left;">Eff Date:</div><div style="text-align:left;margin-left:130px">{effDate}</div></div>'+
-'<div><div style="float:left;">Status:</div><div style="text-align:left;margin-left:130px">{status}</div></div>'+
-			'<div><div style="float:left;">Monthly Premium:</div style="text-align:left;margin-left:130px"><div>{premium}</div></div>'+
+			'<div><div style="float:left;"><b>Policy #: </b></div><div style="text-align:left;margin-left:130px"><b>{PolicyNumber}</b></div></div>'+
+			'<div><div style="float:left;">Product:</div><div style="text-align:left;margin-left:130px">{Product}</div></div>'+
+			'<div><div style="float:left;">Eff Date:</div><div style="text-align:left;margin-left:130px">{EffDate}</div></div>'+
+'<div><div style="float:left;">Status:</div><div style="text-align:left;margin-left:130px">{Status}</div></div>'+
+			'<div><div style="float:left;">Monthly Premium:</div style="text-align:left;margin-left:130px"><div>{Premium}</div></div>'+
 
 		'</div>'
 	

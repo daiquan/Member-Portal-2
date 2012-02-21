@@ -9,7 +9,7 @@ var secondaryContactForm = {
 		{
 			xtype:'selectfield',
 			label:'Type',
-			name:'contactName',
+			name:'contactType',
 			options:[
 			{
 				text:'Home Phone',

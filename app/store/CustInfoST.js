@@ -3,8 +3,8 @@ Ext.define('PET.store.CustInfoST',{
 	config:{
 		model:'PET.model.CustInfoMD',
 		proxy: {
-	     type: 'ajax',
-	     url : 'app/data/CustomerInfoData.json'
+	     type: 'rest',
+	     url : 'http://staging.wfic.ca/api/MemberPortalService/GetCustomerInfo'
 	  }
 	}
 

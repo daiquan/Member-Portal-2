@@ -9,7 +9,7 @@ var primaryContactForm = {
 		{
 			xtype:'selectfield',
 			label:'Type',
-			name:'contactName',
+			name:'ContactType',
 			options:[
 			{
 				text:'Home Phone',
@@ -36,7 +36,7 @@ var primaryContactForm = {
 		{
 			xtype:'textfield',
 			label:'Contact',
-			name:'contactValue'
+			name:'ContactValue'
 		}
 		
 		]

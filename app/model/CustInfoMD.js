@@ -12,13 +12,15 @@ Ext.define('PET.model.CustInfoMD',{
 
 		config:{
 			fields:[
-			{name:'claimPaymentMethod',type:'string'}
+			{name:'claimPaymentMethod',type:'string'},
+			{name:'firstName',type:'string'},
+			{name:'lastName',type:'string'}
 			],
 			associations: [
-	        {type: 'hasMany', model: 'PET.model.ContactMD',    name: 'primaryContacts'}
-					//{type: 'hasMany', model: 'PET.model.ContactMD',    name: 'secondaryContacts'}
-					//{type: 'hasOne', model:'PET.model.AddressMD', name:'ratingAddress'}
-					//{type: 'hasOne', model:'PET.model.AddressMD', name:'mailingAddress'}
+	        {type: 'hasMany', model: 'PET.model.ContactMD',    name: 'primaryContacts'},
+					{type: 'hasMany', model: 'PET.model.ContactMD',    name: 'secondaryContacts'},
+					{type: 'hasOne', model:'PET.model.AddressMD', name:'ratingAddress'},
+					{type: 'hasOne', model:'PET.model.AddressMD', name:'mailingAddress'}
 	    ]
 		}
 

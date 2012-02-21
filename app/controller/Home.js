@@ -24,6 +24,7 @@ Ext.define('PET.controller.Home',{
         
         console.log('init home controller.');
 				Ext.Viewport.setLayout({type: 'card', animation: {type: 'slide',direction:'left'}});
+				
 				var landingPage;
 				//isAuthenticated=true;
         if(isAuthenticated){
@@ -37,25 +38,46 @@ Ext.define('PET.controller.Home',{
 					var landingPage=Ext.create('PET.view.LoginVW');
 				}
         
-        
+       
         
         Ext.Viewport.add(landingPage);
       
         this.control({
 						'#CustInfoVW':{
 							'activate':function(){
-								var pstore =Ext.getStore('CustPrimaryContactST'); 
-								var sstore = Ext.getStore('CustSecondaryContactST'); 
-								var lstP = Ext.getCmp('lstPrimaryContact');
-								var lstS = Ext.getCmp('lstSecondaryContact');
-
-								lstP.setStore(pstore);
-								pstore.load(function(records, operation, success){
-									console.log('primary contacts are loaded.');
-									lstP.setHeight(pstore.data.length*46);
-									lstS.setHeight(sstore.data.length*46);
-									lstP.refresh();
-								},this);
+								//var tokenParam = Ext.create('ParamMD',{name:'htoken',value:mpToken});
+								this.callAPIService('GET','MemberPortalService','GetCustomerInfo',{htoken:mpToken,returnType:'json'},function(response){
+									console.log('get customer info result:')
+									console.log(response);
+									if(response.GetCustomerInfoResult.ResponseMessageHeader.IsSuccess)
+									{
+										var customerInfoData = response.GetCustomerInfoResult.ResponseMessageBody.MessageBody[0];
+										var pstore =Ext.getStore('CustPrimaryContactST'); 
+										var sstore = Ext.getStore('CustSecondaryContactST');
+										var pastore =Ext.getStore('CustPetAddressST'); 
+										var mastore = Ext.getStore('CustMailingAddressST'); 
+										var lstP = Ext.getCmp('lstPrimaryContact');
+										var lstS = Ext.getCmp('lstSecondaryContact');
+										var lstPA = Ext.getCmp('lstPetAddress');
+										var lstMA = Ext.getCmp('lstMailingAddress');
+										pstore.setData(customerInfoData.PrimaryContacts);
+										sstore.setData(customerInfoData.SecondaryContacts);
+										pastore.setData(customerInfoData.RatingAddress);
+										mastore.setData(customerInfoData.MailingAddress);
+										
+										//pstore.setData({contactType:'HomePhone',contactValue:'2041234567'});
+										lstP.setHeight(pstore.data.length*46);
+										lstS.setHeight(sstore.data.length*46);
+										lstP.refresh();
+										lstS.refresh();
+										lstPA.refresh();
+										lstMA.refresh();
+										
+									}
+									else{
+										alert('Error: can not load customer info.');
+									}
+								});
 							}
 							
 						},
@@ -247,6 +269,13 @@ Ext.define('PET.controller.Home',{
 	     	var activeItem = Ext.Viewport.getActiveItem();
         var card;
 
+					if(direction==null)
+						direction='left';
+
+	       Ext.Viewport.getLayout().getAnimation().getOutAnimation().setDirection(direction);
+				Ext.Viewport.getLayout().getAnimation().getInAnimation().setDirection(direction);
+				this.getEventDispatcher().addListener('element', '#'+viewName, 'swipe', this.onTouchPadEvent, this);
+
 				historyItem=Ext.Viewport.items.get(viewName);
 				if(historyItem!=null)
 				{
@@ -265,18 +294,22 @@ Ext.define('PET.controller.Home',{
 					
 				}
 				//set default card switch direction to -> left
-				if(direction==null)
-					direction='left';
- 
-       
-        Ext.Viewport.getLayout().getAnimation().getOutAnimation()._direction=direction;
-               Ext.Viewport.getLayout().getAnimation().getInAnimation()._direction=direction;
+
+        //Ext.Viewport.getLayout().getAnimation().getOutAnimation()._direction=direction;
+               //Ext.Viewport.getLayout().getAnimation().getInAnimation()._direction=direction;
        
 
 				if(direction == 'left'){
 						previewsView.push(activeItem.getItemId());
 				}
 		
+    },
+    onTouchPadEvent: function(e, target, options, eventController) {
+        var eventName = eventController.info.eventName;
+ 				if(e.direction == 'right'){
+					this.changeView(previewsView.pop(),'right');
+				}
+				
     },
 		callAPIService:function(httpMethod,serviceName,methodName,params,successFnc){
 
@@ -297,7 +330,28 @@ Ext.define('PET.controller.Home',{
 					},
 					method:'POST',
 					scope:this,
-					success:successFnc
+					success:function(response){
+						Ext.Viewport.setMasked(false);
+						var resultObj = eval("("+response.responseText+")");
+						successFnc(resultObj,this);
+					}
+					});
+			}
+			if(httpMethod == 'GET')
+			{
+				Ext.Ajax.request({
+					url:'http://staging.wfic.ca/api/'+serviceName+'/'+methodName,
+					params:params,
+					headers:{
+						'Content-Type':'application/json'
+					},
+					method:'GET',
+					scope:this,
+					success:function(response){
+						Ext.Viewport.setMasked(false);
+						var resultObj = eval("("+response.responseText+")");
+						successFnc(resultObj,this);
+					}
 					});
 			}
 
