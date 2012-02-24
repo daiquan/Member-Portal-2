@@ -2,9 +2,10 @@ Ext.define('PET.model.ContactMD',{
 	extend:'Ext.data.Model',
 	config:{
 		fields:[
-		{name:'id',type:'int'},
+		{name:'ContactId',type:'string'},
 		{name:'ContactType',type:'string'},
-		{name:'ContactValue',type:'string'}
+		{name:'ContactValue',type:'string'},
+		{name:'IsSecondary',type:'bool'}
 
 		],
 		proxy: {

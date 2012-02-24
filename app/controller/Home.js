@@ -134,7 +134,8 @@ Ext.define('PET.controller.Home',{
 						'#btnAddSecondaryContact':{
 							'tap':function(){
 								Ext.Viewport.items.get('AddContactActionSheet').hide();
-								
+								sContact=Ext.getCmp('EditSecondaryContactVW');
+								sContact.setRecord(null);
 
 								this.changeView('EditSecondaryContactVW');
 
@@ -149,6 +150,7 @@ Ext.define('PET.controller.Home',{
 								{
 									actionSheet.hide();
 								}
+					
 								
 								this.activateContact('EditPrimaryContactVW');
 								
@@ -158,8 +160,8 @@ Ext.define('PET.controller.Home',{
          
 							'deactivate':function()
 							{
-								var pcontact = Ext.getCmp('EditPrimaryContactVW');
-								pcontact.reset();
+								var pContact = Ext.getCmp('EditPrimaryContactVW');
+								pContact.setRecord(null);
 							}
 						},
 
@@ -171,12 +173,21 @@ Ext.define('PET.controller.Home',{
 							'deactivate':function()
 							{
 								var pcontact = Ext.getCmp('EditSecondaryContactVW');
+								var store = Ext.getStore('')
 								pcontact.reset();
 							}
 						},
 						'#btnPCAction':{
-							'tap':function(){
-								this.createContact('EditPrimaryContactVW');
+							'tap':function(btn){
+								if(btn.getText() == 'Create')
+								{
+									this.createContact('EditPrimaryContactVW');
+								}
+								if(btn.getText() == 'Update')
+								{
+									this.updateContact('EditPrimaryContactVW');
+								}
+								
 							}
 						},
 						'#btnSCAction':{
@@ -205,37 +216,40 @@ Ext.define('PET.controller.Home',{
         }); //end control
     },
 		removeContact:function(contactView){
+			console.log('tap delete contact');
 			var pcontact = Ext.getCmp(contactView);
-			var store = contactView=='EditPrimaryContactVW'?Ext.getStore('CustPrimaryContactST'):Ext.getStore('CustSecondaryContactST');
-			var contactListId = contactView=='EditPrimaryContactVW'?'lstPrimaryContact':'lstSecondaryContact';
-			var pcList = Ext.getCmp(contactListId);
-			store.remove(pcontact.getRecord());
-			store.sync();
-			pcList.refresh();
-			this.changeView('CustInfoVW','right');
-		
+			var record =pcontact.getRecord().data;
+			var data = record.ContactId;
+			this.callAPIService('DELETE','MemberPortalService','DeleteContact',data,function(response,page){
+				console.log(response);
+				page.changeView('CustInfoVW','right');
+			});
 		},
 		createContact:function(contactView){
 			console.log('tap btnPCAction');
 			var pcontact = Ext.getCmp(contactView);
-			var store = contactView=='EditPrimaryContactVW'?Ext.getStore('CustPrimaryContactST'):Ext.getStore('CustSecondaryContactST');
-			var contactListId = contactView=='EditPrimaryContactVW'?'lstPrimaryContact':'lstSecondaryContact';
-			store.add(pcontact.getValues());
-			store.sync();
-/*			var pcList = Ext.getCmp(contactListId);
+			var data = pcontact.getValues();
+			
+			this.callAPIService('POST','MemberPortalService','AddContact',data,function(response,page){
+				console.log(response);
+				page.changeView('CustInfoVW','right');
+			});
 
-			store.load({
-	     scope   : this,
-	     callback: function(records, operation, success) {
-	     //the operation object contains all of the details of the load operation
-	     
-				pcList.refresh();
-				
-				
-	     }
-	     });*/
+			
+		},
+		updateContact:function(contactView){
+			console.log('tap btnPCAction');
+			var pcontact = Ext.getCmp(contactView);
+			var values = pcontact.getValues();
+			var data = pcontact.getRecord().data;
+			data.ContactValue = values.ContactValue;
+			data.ContactType=values.ContactType;
+			this.callAPIService('PUT','MemberPortalService','UpdateContact',data,function(response,page){
+				console.log(response);
+				page.changeView('CustInfoVW','right');
+			});
 
-			this.changeView('CustInfoVW','right');
+			
 		},
 		activateContact:function(contactView){
 			
@@ -243,19 +257,26 @@ Ext.define('PET.controller.Home',{
 			var titleBarId = contactView=='EditPrimaryContactVW'?'pcTitle':'scTitle';
 			var titleText = contactView=='EditPrimaryContactVW'?'Primary':'Secondary';
 			var pcontact = Ext.getCmp(contactView);
-
-			var model=pcontact.getRecord();
+			var isNew=false;
+			var contactRecord=pcontact.getRecord();
 			
 			
 			
-			if(model==null)
+			if(contactRecord==null)
 			{
 				var newModel = Ext.create('PET.model.ContactMD');
 				pcontact.load(newModel);
-				model=pcontact.getRecord();
+				contactRecord=pcontact.getRecord();
+				isNew=true;
+			}
+			else
+			{
+				var newModel = Ext.create('PET.model.ContactMD',contactRecord.data);
+				pcontact.load(newModel);
+				isNew=false;
 			}
 
-			if (!model.phantom) {
+			if (isNew) {
           Ext.getCmp(titleBarId).setTitle('Create '+titleText+' Contact');
           Ext.getCmp(btnId).setText('Create');
           //deleteButton.hide();
@@ -286,13 +307,14 @@ Ext.define('PET.controller.Home',{
 					card = Ext.create('PET.view.'+viewName);
 					Ext.Viewport.add(card);
 				}
-				Ext.Viewport.setActiveItem(card);
-				
 				if(data!=null){
 					
 					card.setRecord(data);
 					
 				}
+				Ext.Viewport.setActiveItem(card);
+				
+
 				//set default card switch direction to -> left
 
         //Ext.Viewport.getLayout().getAnimation().getOutAnimation()._direction=direction;
@@ -317,26 +339,6 @@ Ext.define('PET.controller.Home',{
 				xtype:'loadmask',
 				message:'please wait...'
 			});
-			
-			if(httpMethod == 'POST')
-			{
-				Ext.Ajax.request({
-					url:'http://staging.wfic.ca/api/'+serviceName+'/'+methodName,
-					jsonData:{
-						request:params
-					},
-					headers:{
-						'Content-Type':'application/json'
-					},
-					method:'POST',
-					scope:this,
-					success:function(response){
-						Ext.Viewport.setMasked(false);
-						var resultObj = eval("("+response.responseText+")");
-						successFnc(resultObj,this);
-					}
-					});
-			}
 			if(httpMethod == 'GET')
 			{
 				Ext.Ajax.request({
@@ -354,6 +356,30 @@ Ext.define('PET.controller.Home',{
 					}
 					});
 			}
+			else
+			{
+				Ext.Ajax.request({
+					url:'http://staging.wfic.ca/api/'+serviceName+'/'+methodName,
+					jsonData:{
+						request:params
+					},
+					params:{
+						'htoken':mpToken,
+						'returnType':'json'
+					},
+					headers:{
+						'Content-Type':'application/json'
+					},
+					method:httpMethod,
+					scope:this,
+					success:function(response){
+						Ext.Viewport.setMasked(false);
+						var resultObj = eval("("+response.responseText+")");
+						successFnc(resultObj,this);
+					}
+					});
+			}
+
 
 		}
 });

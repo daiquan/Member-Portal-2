@@ -22,17 +22,17 @@ Ext.define('PET.view.LoginVW', {
 					title:'Login',
 				
 					width:'95%',
-					instructions:'please enter email on file (913116@pet.com)',
+					instructions:'please login with your email.',
 					
-		/*
+		
 					defaults:{
-								labelWidth:'40%'
+								labelWidth:'35%'
 							
-							},*/
+							},
 		
 					items:[
 					{
-						labelWidth:'20%',
+						
 						xtype:'emailfield',
 						label:'Email',
 						name:'email',

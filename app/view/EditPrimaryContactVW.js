@@ -13,15 +13,19 @@ var primaryContactForm = {
 			options:[
 			{
 				text:'Home Phone',
-				value:'HomePhone'
+				value:'Home Phone'
 			},
 			{
 				text:'Cell Phone',
-				value:'CellPhone'
+				value:'Cell Phone'
 			},
 			{
 				text:'Work Phone',
-				value:'WorkPhone'
+				value:'Work Phone'
+			},
+			{
+				text:'Pager',
+				value:'Pager Phone'
 			},
 			{
 				text:'Fax',
