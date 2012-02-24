@@ -295,7 +295,8 @@ Ext.define('PET.controller.Home',{
 
 	       Ext.Viewport.getLayout().getAnimation().getOutAnimation().setDirection(direction);
 				Ext.Viewport.getLayout().getAnimation().getInAnimation().setDirection(direction);
-				this.getEventDispatcher().addListener('element', '#'+viewName, 'swipe', this.onTouchPadEvent, this);
+				//if(this.)
+				
 
 				historyItem=Ext.Viewport.items.get(viewName);
 				if(historyItem!=null)
@@ -304,6 +305,7 @@ Ext.define('PET.controller.Home',{
 					card=historyItem;
 				}
 				else{
+					this.getEventDispatcher().addListener('element', '#'+viewName, 'swipe', this.onTouchPadEvent, this);
 					card = Ext.create('PET.view.'+viewName);
 					Ext.Viewport.add(card);
 				}
