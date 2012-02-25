@@ -1,6 +1,7 @@
 Ext.define('PET.view.LoginVW', {
 	id:"LoginVW",
     extend: 'Ext.form.Panel',
+		requires: ['Ext.form.FieldSet','Ext.field.Email','Ext.field.Password'],
 		alias: 'widget.LoginVW',
     config: {
       fullscreen: true,

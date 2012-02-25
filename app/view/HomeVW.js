@@ -1,3 +1,4 @@
+/*
 var menu={
 	xtype:'container',
 	layout:{
@@ -13,38 +14,39 @@ var menu={
 	items:[
 	{
 		id: 'btnCustomerInfo',
-		text:'Cust Info',
-		go:'left_CustInfoVW'
+		text:'Cust Info'
+		//go:'left_CustInfoVW'
    },
   {
 		id: 'btnPaymentInfo',
-		text:'Payment Info',
-		go:'left_PaymentInfoVW'
+		text:'Payment Info'
+		//go:'left_PaymentInfoVW'
    },
   {
 		id: 'btnPetInfo',
-		text:'Pet Info',
-		go:'left_PetInfoVW'
+		text:'Pet Info'
+		//go:'left_PetInfoVW'
    },
   {
 		id: 'btnClaim',
-		text:'Calim',
-		go:'left_ClaimVW'
+		text:'Calim'
+		//go:'left_ClaimVW'
    },
   {
 		id: 'btnDocument',
-		text:'Document',
-		go:'left_DocumentVW'
+		text:'Document'
+		//go:'left_DocumentVW'
    },
   {
 		id: 'btnAddPetQuote',
-		text:'Add Pet',
-		go:'left_AddPetQuoteVW'
+		text:'Add Pet'
+		//go:'left_AddPetQuoteVW'
    }
 	]
 	
 	
-};
+};*/
+
 
 
 Ext.define('PET.view.HomeVW', {

@@ -23,29 +23,32 @@ var toolbarMenu = {
 			{
 				iconCls:'user',
 				title:'Customer Info',
-				go:'left_CustInfoVW'
+				id:'btnCustomerInfo'
+				//go:'left_CustInfoVW'
 			
 				
 			},
 			{
 				iconCls:'credit_card',
 				title:'Payment',
-				go:'left_PaymentInfoVW'
+				id:'btnPaymentInfo'
+				//go:'left_PaymentInfoVW'
 			},
 			{
 				iconCls:'dog-paw',
 				title:'Pet Info',
-				go:'left_PetInfoVW'
+				id:'btnPetInfo'
+				//go:'left_PetInfoVW'
 			},
 			{
 				iconCls:'download',
-				title:'Document',
-				go:'left_DocumentVW'
+				title:'Document'
+				//go:'left_DocumentVW'
 			},
 			{
 				iconCls:'compose',
-				title:'Claim',
-				go:'left_ClaimVW'
+				title:'Claim'
+				//go:'left_ClaimVW'
 			}
 		]
 	
@@ -53,7 +56,7 @@ var toolbarMenu = {
 
 var isAuthenticated=false;
 var mpToken = null;
-
+var reLoadPage=true;
 Ext.application({
 	name:'PET',
 	controllers:['Login','Home','PaymentInfo','PetInfo','Claim','Document'],

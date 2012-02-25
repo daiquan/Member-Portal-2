@@ -43,44 +43,6 @@ Ext.define('PET.controller.Home',{
         Ext.Viewport.add(landingPage);
       
         this.control({
-						'#CustInfoVW':{
-							'activate':function(){
-								//var tokenParam = Ext.create('ParamMD',{name:'htoken',value:mpToken});
-								this.callAPIService('GET','MemberPortalService','GetCustomerInfo',{htoken:mpToken,returnType:'json'},function(response){
-									console.log('get customer info result:')
-									console.log(response);
-									if(response.GetCustomerInfoResult.ResponseMessageHeader.IsSuccess)
-									{
-										var customerInfoData = response.GetCustomerInfoResult.ResponseMessageBody.MessageBody[0];
-										var pstore =Ext.getStore('CustPrimaryContactST'); 
-										var sstore = Ext.getStore('CustSecondaryContactST');
-										var pastore =Ext.getStore('CustPetAddressST'); 
-										var mastore = Ext.getStore('CustMailingAddressST'); 
-										var lstP = Ext.getCmp('lstPrimaryContact');
-										var lstS = Ext.getCmp('lstSecondaryContact');
-										var lstPA = Ext.getCmp('lstPetAddress');
-										var lstMA = Ext.getCmp('lstMailingAddress');
-										pstore.setData(customerInfoData.PrimaryContacts);
-										sstore.setData(customerInfoData.SecondaryContacts);
-										pastore.setData(customerInfoData.RatingAddress);
-										mastore.setData(customerInfoData.MailingAddress);
-										
-										//pstore.setData({contactType:'HomePhone',contactValue:'2041234567'});
-										lstP.setHeight(pstore.data.length*46);
-										lstS.setHeight(sstore.data.length*46);
-										lstP.refresh();
-										lstS.refresh();
-										lstPA.refresh();
-										lstMA.refresh();
-										
-									}
-									else{
-										alert('Error: can not load customer info.');
-									}
-								});
-							}
-							
-						},
 
             '#lstPrimaryContact':{
 								'itemtap':function(item){
@@ -108,9 +70,24 @@ Ext.define('PET.controller.Home',{
 								 
             	}
 						},
+						'#btnCustomerInfo':{
+							'tap':function()
+							{
+								historyItem=Ext.Viewport.items.get('CustInfoVW');
+									this.changeView('CustInfoVW','left');
+								if(historyItem==null)
+								{
+
+									this.loadCustomerInfo();
+								}
+							
+								
+							}
+						},
             'button[go]':{'tap':function(btn){
                 var direction = btn.go.split('_')[0];
                 var viewName = btn.go.split('_')[1];
+								
                 this.changeView(viewName,direction)
 
                 }
@@ -118,6 +95,7 @@ Ext.define('PET.controller.Home',{
             'tab[go]':{'select':function(btn){
                 var direction = btn.go.split('_')[0];
                 var viewName = btn.go.split('_')[1];
+
                 this.changeView(viewName,direction)
 
                 }
@@ -215,6 +193,40 @@ Ext.define('PET.controller.Home',{
 						
         }); //end control
     },
+		loadCustomerInfo:function(page){
+				this.callAPIService('GET','MemberPortalService','GetCustomerInfo',{htoken:mpToken,returnType:'json'},function(response){
+					console.log('get customer info result:')
+					console.log(response);
+					if(response.GetCustomerInfoResult.ResponseMessageHeader.IsSuccess)
+					{
+						var customerInfoData = response.GetCustomerInfoResult.ResponseMessageBody.MessageBody[0];
+						var pstore =Ext.getStore('CustPrimaryContactST'); 
+						var sstore = Ext.getStore('CustSecondaryContactST');
+						var pastore =Ext.getStore('CustPetAddressST'); 
+						var mastore = Ext.getStore('CustMailingAddressST'); 
+						var lstP = Ext.getCmp('lstPrimaryContact');
+						var lstS = Ext.getCmp('lstSecondaryContact');
+						var lstPA = Ext.getCmp('lstPetAddress');
+						var lstMA = Ext.getCmp('lstMailingAddress');
+						pstore.setData(customerInfoData.PrimaryContacts);
+						sstore.setData(customerInfoData.SecondaryContacts);
+						pastore.setData(customerInfoData.RatingAddress);
+						mastore.setData(customerInfoData.MailingAddress);
+
+						//pstore.setData({contactType:'HomePhone',contactValue:'2041234567'});
+						lstP.setHeight(pstore.data.length*46);
+						lstS.setHeight(sstore.data.length*46);
+						lstP.refresh();
+						lstS.refresh();
+						lstPA.refresh();
+						lstMA.refresh();
+						
+					}
+					else{
+						alert('Error: can not load customer info.');
+					}
+				});
+		},
 		removeContact:function(contactView){
 			console.log('tap delete contact');
 			var pcontact = Ext.getCmp(contactView);
@@ -223,6 +235,7 @@ Ext.define('PET.controller.Home',{
 			this.callAPIService('DELETE','MemberPortalService','DeleteContact',data,function(response,page){
 				console.log(response);
 				page.changeView('CustInfoVW','right');
+				page.loadCustomerInfo();
 			});
 		},
 		createContact:function(contactView){
@@ -232,7 +245,9 @@ Ext.define('PET.controller.Home',{
 			
 			this.callAPIService('POST','MemberPortalService','AddContact',data,function(response,page){
 				console.log(response);
+				reLoadPage=true;
 				page.changeView('CustInfoVW','right');
+				page.loadCustomerInfo();
 			});
 
 			
@@ -247,6 +262,7 @@ Ext.define('PET.controller.Home',{
 			this.callAPIService('PUT','MemberPortalService','UpdateContact',data,function(response,page){
 				console.log(response);
 				page.changeView('CustInfoVW','right');
+				page.loadCustomerInfo();
 			});
 
 			
